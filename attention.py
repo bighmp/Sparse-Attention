@@ -12,6 +12,7 @@ def dense_attention(Q, K, V, causal=False):
         mask = torch.triu(torch.ones(seq_len, seq_len), diagonal=1).bool()
         scores = scores.masked_fill(mask, float('-inf'))
     attn_weights = torch.softmax(scores, dim=-1)
+    attn_weights = torch.nan_to_num(attn_weights, nan=0.0)
     output = attn_weights @ V
     return output, attn_weights
 
@@ -39,5 +40,6 @@ def sparse_attention(Q, K, V, window_size):
     mask = sliding_window_mask(seq_len, window_size)
     scores = scores.masked_fill(mask, float('-inf'))
     attn_weights = torch.softmax(scores, dim=-1)
+    attn_weights = torch.nan_to_num(attn_weights, nan=0.0)
     output = attn_weights @ V
     return output, attn_weights
