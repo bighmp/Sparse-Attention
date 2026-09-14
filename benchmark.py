@@ -66,3 +66,4 @@ if __name__ == "__main__":
     seq_lengths = [512, 1024, 2048, 4096, 8192]
     results = benchmark(seq_lengths, num_repeats=3)
     plot_results(results)
+    print("Hardware: Google Colab CPU")
