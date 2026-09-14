@@ -2,30 +2,27 @@
 
 A from-scratch PyTorch implementation of dense causal attention and sliding-window sparse attention.
 
-## What I Built
+## Implemented
 
-- Manual dense causal self-attention using matrix multiplication, masking, and softmax
+- Manual dense causal scaled dot-product attention
 - Sliding-window sparse attention
-- Correctness tests comparing sparse attention with dense attention
-- Benchmarking across sequence lengths from 512 to 8192
-- A small 2-layer character-level GPT for comparing dense and sparse attention
-- Training-loss and benchmark plots
+- Correctness tests
 - NaN handling for masked attention
+- Forward-pass benchmarks for sequence lengths 512 to 8192
+- 2-layer character-level GPT on TinyShakespeare
+- Dense vs. sparse training-loss comparison
 
 ## Files
 
-- `attention.py` — dense and sliding-window attention implementations
+- `attention.py` — dense and sliding-window attention
 - `train.py` — TinyGPT model and text generation
 - `test_correctness.py` — correctness checks
-- `benchmark.py` — attention benchmark and plots
+- `benchmark.py` — attention benchmark
 - `benchmark_plot.png` — benchmark results
-- `loss_comparison.png` — dense vs. sparse training loss
-- `WRITEUP.md` — detailed implementation notes and findings
+- `loss_comparison.png` — training loss comparison
+- `WRITEUP.md` — detailed writeup
 
-## Running
-
-Install PyTorch and matplotlib, then run:
+## Installation
 
 ```bash
-python test_correctness.py
-python benchmark.py
+pip install torch matplotlib
